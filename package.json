@@ -1,0 +1,24 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qkrwpdlr/graphQL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qkrwpdlr/graphQL/issues"
+  },
+  "homepage": "https://github.com/qkrwpdlr/graphQL#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.17.4",
+    "nodemon": "^1.18.10"
+  }
+}
