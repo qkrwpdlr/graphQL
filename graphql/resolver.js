@@ -1,39 +1,60 @@
 const resolver = {
   Query: {
-    people: () => people,
+    movies: () => movies,
     /**
      * @param {Object} person default parameter from graphQL
      * @param {Object} payload
      * @param {Number} payload.id
      */
-    person: (person, payload) => getById(payload.id)
+    movie: (movie, payload) => getById(payload.id)
+  },
+  Mutation: {
+    addMovie: (_, { name, score }) => addMovie(name, score),
+    deleteMovie: (_, { id }) => deleteMovie(id)
   }
 };
 
-const people = [
+let movies = [
   {
     id: 1,
     name: "jjj",
-    age: 26,
-    gender: "male"
+    score: 32
   },
   {
     id: 2,
-    name: "jake",
-    age: 21,
-    gender: "female"
+    name: "vvvv",
+    score: 53
   },
   {
     id: 3,
-    name: "naver",
-    age: 200,
-    gender: "male"
+    name: "bbbb",
+    score: 324
   }
 ];
 
 const getById = id => {
-  const filteredPeople = people.filter(person => id === person.id);
-  return filteredPeople[0];
+  const filtereMovie = movies.filter(movies => id === movies.id);
+  return filtereMovie[0];
+};
+
+const addMovie = (name, score) => {
+  let newMovie = {
+    id: movies.length + 1,
+    name,
+    score
+  };
+  movies.push(newMovie);
+  return newMovie;
+};
+
+const deleteMovie = id => {
+  const cleanMovies = movies.filter(movie => movie.id !== id);
+  if (movies.length > cleanMovies.length) {
+    movies = cleanMovies;
+    return true;
+  } else {
+    return false;
+  }
 };
 
 export default resolver;
